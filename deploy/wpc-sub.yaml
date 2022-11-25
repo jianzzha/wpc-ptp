@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    workload.openshift.io/allowed: management
+  labels:
+    openshift.io/cluster-monitoring: "true"
+  name: openshift-ptp
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: ptp-operators
+  namespace: openshift-ptp
+spec:
+  targetNamespaces:
+  - openshift-ptp
+  upgradeStrategy: Default
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: ptp-operator-subscription
+  namespace: openshift-ptp
+spec:
+  channel: alpha
+  name: ptp-operator
+  source: wpc-ptp-operator-cs
+  sourceNamespace: openshift-marketplace
+

@@ -1,0 +1,34 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: wpc-ptp-operator-cs
+  namespace: openshift-marketplace
+spec:
+  sourceType: grpc
+  image: quay.io/redhat-cne/ptp-operator-catalog:v4.11
+  displayName: PTP Operator for WPC
+  publisher: Red Hat
+  grpcPodConfig:
+    nodeSelector:
+      kubernetes.io/os: linux
+      node-role.kubernetes.io/master: ""
+    priorityClassName: system-cluster-critical
+    tolerations:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+      operator: Exists
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 120
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 120
+  icon:
+    base64data: ""
+    mediatype: ""
+  priority: -100
+  updateStrategy:
+    registryPoll:
+      interval: 30m0s
