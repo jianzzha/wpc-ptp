@@ -1,0 +1,13 @@
+apiVersion: ethernet.intel.com/v1
+kind: EthernetClusterConfig
+metadata:
+  name: wpc-comms-pkg
+  namespace: intel-ethernet-operator 
+spec:
+  nodeSelectors:
+    kubernetes.io/hostname: node3
+  deviceSelector:
+    pciAddress: "0000:b5:00.0"
+  deviceConfig:
+    ddpURL: "http://192.168.49.147:81/ice_comms-1.3.31.0.zip"
+    ddpChecksum: "5dbe3ae8d2ada5b78de05da150e5df5befb3bf75"

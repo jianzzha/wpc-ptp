@@ -1,0 +1,21 @@
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: intel-ethernet-operator
+  namespace: intel-ethernet-operator
+spec:
+  targetNamespaces:
+    - intel-ethernet-operator
+
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: intel-ethernet-subscription
+  namespace: intel-ethernet-operator
+spec:
+  channel: alpha
+  name: intel-ethernet-operator
+  source: local-intel-ethernet-operators
+  sourceNamespace: openshift-marketplace

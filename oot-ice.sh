@@ -158,7 +158,7 @@ fi
 REGISTRY_CERT=${REGISTRY_CERT:-""}
 if [[ -n ${REGISTRY_CERT} && -f ${REGISTRY_CERT} ]]; then
     oc delete configmap registry-cas -n openshift-config 2>/dev/null || true
-    oc create configmap registry-cas -n openshift-config --from-file=$(echo ${REGISTRY} | sed 's/:/.../')=${REGISTRY_CERT}
+    oc create configmap registry-cas -n openshift-config --from-file=$(echo ${REGISTRY} | sed 's/:/../')=${REGISTRY_CERT}
     oc patch image.config.openshift.io/cluster --patch '{"spec":{"additionalTrustedCA":{"name":"registry-cas"}}}' --type=merge
 fi
 

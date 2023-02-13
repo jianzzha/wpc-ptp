@@ -1,0 +1,15 @@
+apiVersion: ethernet.intel.com/v1
+kind: EthernetClusterConfig
+metadata:
+  name: wpc-fw
+  namespace: intel-ethernet-operator 
+spec:
+  nodeSelectors:
+    kubernetes.io/hostname: node3
+  deviceSelector:
+    pciAddress: "0000:b5:00.0"
+  deviceConfig:
+    #fwURL: "http://192.168.49.147:81/E810_NVMUpdatePackage_v4_10_Linux.tar.gz"
+    #fwChecksum: "64598337c8730ee00239d728e17bdcb180bb8154"
+    fwURL: "http://192.168.49.147:81/E810_NVMUpdatePackage_v3_20_Linux_.tar.gz"
+    fwChecksum: "51CDC7E7A97131F7CC5B8BCA228258A8DC773C9E"

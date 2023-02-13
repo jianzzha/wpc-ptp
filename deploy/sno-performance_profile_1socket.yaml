@@ -11,6 +11,8 @@ spec:
     pages:
     - size: "1G"
       count: 16 
+    - size: "2M"
+      count: 512
   realTimeKernel:
     enabled: true 
   nodeSelector:

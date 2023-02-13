@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: local-intel-ethernet-operators
+  namespace: openshift-marketplace
+spec:
+  sourceType: grpc
+  image: 192.168.49.147:5000/intel-ethernet-operator-catalog:v0.0.2
+  publisher: Intel
+  displayName: Intel ethernet operators(Local)
